@@ -14,3 +14,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MafiaMaster"
 include ':app'
+include ':core:ui'
+include ':data:players'
+include ':feature:game'
+include ':feature:home'
+include ':feature:players-data'
+include ':feature:roles'
+include ':feature:rules'
+include ':feature:settings'
