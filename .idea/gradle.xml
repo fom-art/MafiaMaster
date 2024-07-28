@@ -16,9 +16,11 @@
             <option value="$PROJECT_DIR$/data/players" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/game" />
-            <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/game-setup" />
+            <option value="$PROJECT_DIR$/feature/games-archive" />
+            <option value="$PROJECT_DIR$/feature/player-details" />
             <option value="$PROJECT_DIR$/feature/players-data" />
-            <option value="$PROJECT_DIR$/feature/roles" />
+            <option value="$PROJECT_DIR$/feature/roles-giving" />
             <option value="$PROJECT_DIR$/feature/rules" />
             <option value="$PROJECT_DIR$/feature/settings" />
           </set>

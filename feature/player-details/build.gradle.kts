@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
@@ -7,11 +7,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.fomart.mafiamaster"
         minSdk = 27
-        versionCode = 1
-        versionName = "1.0"
-
+        namespace = "com.fomart.mafiamaster.feature.player_details"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,7 +23,7 @@ android {
     }
 
     buildFeatures {
-        compose = true
+        viewBinding = true
     }
 
     compileOptions {
@@ -37,28 +34,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace = "com.fomart.mafiamaster"
 }
 
 dependencies {
-    implementation(project(":core:ui"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-
-    // Jetpack Compose Dependencies
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.runtime.livedata)
-    implementation(libs.androidx.foundation)
-
-    // Optional: Compose Tooling and Testing Dependencies
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-
-    // Other dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

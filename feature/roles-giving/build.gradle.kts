@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         minSdk = 27
-        namespace = "com.fomart.mafiamaster.feature.roles"
+        namespace = "com.fomart.mafiamaster.feature.roles_giving"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
