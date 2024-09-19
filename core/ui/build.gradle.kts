@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:resources"))
+
     // Jetpack Compose Dependencies
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)

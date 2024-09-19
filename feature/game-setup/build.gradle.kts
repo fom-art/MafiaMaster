@@ -37,6 +37,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":core:resources"))
+    // Jetpack Compose Dependencies
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.foundation)
+
+    // Optional: Compose Tooling and Testing Dependencies
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

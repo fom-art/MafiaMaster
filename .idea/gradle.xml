@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/resources" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/data/players" />
@@ -20,7 +21,7 @@
             <option value="$PROJECT_DIR$/feature/games-archive" />
             <option value="$PROJECT_DIR$/feature/player-details" />
             <option value="$PROJECT_DIR$/feature/players-data" />
-            <option value="$PROJECT_DIR$/feature/roles-giving" />
+            <option value="$PROJECT_DIR$/feature/roles-distribution" />
             <option value="$PROJECT_DIR$/feature/rules" />
             <option value="$PROJECT_DIR$/feature/settings" />
           </set>
