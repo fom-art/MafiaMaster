@@ -1,5 +1,6 @@
 package com.fomart.mafiamaster.core.ui.screens.home
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,19 +28,24 @@ fun HomeScreen(
         Row(modifier = Modifier.fillMaxWidth()) {
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = { /*TODO*/ }) {
+                onClick = goToGame
+            ) {
 
             }
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = { /*TODO*/ }) {
+                onClick = goToRules
+            ) {
 
             }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
 fun HomeScreenPreview() {
     MafiaMasterTheme {

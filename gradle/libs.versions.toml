@@ -1,24 +1,18 @@
 [versions]
 activityCompose = "1.7.2"
-androidxJunit = "1.1.5"
 appcompat = "1.7.0"
-appcompatVersion = "1.7.0"
 constraintlayout = "2.1.4"
 coreKtx = "1.10.1"
-coreKtxVersion = "1.10.1"
 espressoCore = "3.5.1"
-espressoCoreVersion = "3.5.1"
 foundation = "1.5.0"
-googleMaterial = "1.9.0"
 gradle = "8.0.2"
 junit = "4.13.2"
 junitVersion = "1.1.5"
-kotlinGradlePlugin = "1.8.20"
+kotlin_version = "2.0.0"
 material = "1.5.0"
 materialVersion = "1.5.0"
 runtimeLivedata = "1.5.0"
 uiTestManifest = "1.5.0"
-material3Android = "1.1.0"
 uiTextGoogleFonts = "1.5.0"
 
 [libraries]
@@ -43,3 +37,5 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 
 [plugins]
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin_version" }

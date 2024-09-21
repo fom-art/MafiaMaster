@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
-import com.fomart.mafiamaster.feature.resources.R
+import com.fomart.mafiamaster.core.resources.R
 
 
 @Composable
@@ -18,7 +18,7 @@ fun RolesSetupLayout(
     modifier: Modifier = Modifier,
     roleItemsData: List<RoleItemData>
 ) {
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         items(roleItemsData) { roleItemData ->
             RoleItemRow(roleItemData = roleItemData)
         }

@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.compose.compiler)
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
