@@ -1,4 +1,4 @@
-package com.fomart.mafiamaster.core.ui.screens.home
+package com.fomart.mafiamaster.core.ui.screens.game.distribution
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement

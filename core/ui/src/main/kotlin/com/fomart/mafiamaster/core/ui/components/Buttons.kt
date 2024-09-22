@@ -1,20 +1,66 @@
 package com.fomart.mafiamaster.core.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import org.w3c.dom.Text
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
 
 @Composable
 fun CustomFilledButton(
     modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit,
+    enabled: Boolean = true,
 ) {
-
+    CustomFilledButton(
+        modifier = modifier,
+        onClick = onClick,
+        enabled = enabled
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Bold
+        )
+    }
 }
 
 @Composable
 fun CustomFilledButton(
     modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    enabled: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        enabled = enabled,
+    ) {
+        content()
+    }
+}
 
+@Preview
+@Composable
+fun CustomFilledButtonPreview() {
+    var isEnabled by remember { mutableStateOf(true) }
+    MafiaMasterTheme {
+        CustomFilledButton(
+            text = "Click me!",
+            onClick = { isEnabled = !isEnabled },
+            enabled = isEnabled
+        )
+    }
 }
