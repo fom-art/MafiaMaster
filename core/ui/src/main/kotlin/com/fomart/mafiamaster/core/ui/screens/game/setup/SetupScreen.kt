@@ -34,10 +34,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
 import com.fomart.mafiamaster.core.resources.R
 import com.fomart.mafiamaster.core.ui.components.CustomFilledButton
+import com.fomart.mafiamaster.core.ui.components.DefaultTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DefaultScaffoldScreen() {
+fun DefaultScaffoldScreen(
+    modifier: Modifier = Modifier,
+    goBack: () -> Unit,
+) {
     // State for the scaffold (for handling things like the drawer state)
 
     // State for the FAB click action
@@ -46,8 +50,9 @@ fun DefaultScaffoldScreen() {
     // Scaffold layout
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = "Default Scaffold") },
+            DefaultTopBar(
+                title = stringResource(id = R.string.setup_title),
+                goBack = goBack
             )
         },
     ) { innerPadding ->
@@ -70,7 +75,7 @@ fun SetupBody(
 fun HomeScreenPreview() {
     MafiaMasterTheme {
         DefaultScaffoldScreen(
-
+            goBack = {}
         )
     }
 }
