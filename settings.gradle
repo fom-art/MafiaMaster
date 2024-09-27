@@ -15,6 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "MafiaMaster"
 include ':app'
 include ':core:ui'
+include ':core:model'
 include ':core:resources'
 include ':data:players'
 include ':feature:game'

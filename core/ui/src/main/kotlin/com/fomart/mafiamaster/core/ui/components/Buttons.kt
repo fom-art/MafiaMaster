@@ -1,6 +1,7 @@
 package com.fomart.mafiamaster.core.ui.components
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -12,8 +13,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.fomart.mafiamaster.core.resources.R
 import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
 
 @Composable
@@ -29,6 +32,11 @@ fun CustomFilledButton(
         enabled = enabled
     ) {
         Text(
+            modifier = Modifier
+                .padding(
+                    vertical = dimensionResource(id = R.dimen.padding_xsmall),
+                    horizontal = dimensionResource(id = R.dimen.padding_medium)
+                ),
             text = text,
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Bold

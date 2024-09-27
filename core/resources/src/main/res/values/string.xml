@@ -24,9 +24,12 @@
     <!-- Role Assignment -->
     <string name="role_assignment_title">Assign Roles</string>
     <string name="role_mafia">Mafia</string>
-    <string name="role_detective">Detective</string>
-    <string name="role_citizen">Citizen</string>
+    <string name="role_don">Don</string>
+    <string name="role_mistress">Mistress</string>
     <string name="role_doctor">Doctor</string>
+    <string name="role_maniac">Maniac</string>
+    <string name="role_commissar">Commissar</string>
+    <string name="role_citizen">Citizen</string>
 
     <!-- Notifications -->
     <string name="notification_victory">Victory!</string>
