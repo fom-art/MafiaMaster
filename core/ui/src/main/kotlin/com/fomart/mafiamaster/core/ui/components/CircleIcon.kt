@@ -24,14 +24,15 @@ fun CircleIcon(
 ) {
     Box(
         modifier = modifier
-            .clip(CircleShape),
+            .clip(CircleShape)
+            .size(dimensionResource(id = R.dimen.icon_size_large))
+        ,
     ) {
         Box(
             modifier = Modifier.background(backgroundColor),
         ) {
             Icon(
                 modifier = Modifier
-                    .size(dimensionResource(id = R.dimen.icon_size_large))
                     .padding(all = dimensionResource(id = R.dimen.padding_small)),
                 painter = painter,
                 tint = iconColor,

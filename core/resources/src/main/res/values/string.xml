@@ -23,6 +23,7 @@
 
     <!-- Role Assignment -->
     <string name="role_assignment_title">Assign Roles</string>
+    <string name="role_player_number">Player %d</string>
     <string name="role_mafia">Mafia</string>
     <string name="role_don">Don</string>
     <string name="role_mistress">Mistress</string>

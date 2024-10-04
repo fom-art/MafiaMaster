@@ -107,9 +107,7 @@ fun SetupBody(
     }
 }
 
-@Preview(
-    showBackground = true,
-)
+@Preview(showBackground = true,)
 @Composable
 fun SetupScreenPreview() {
     var roleDistributionModel by remember { mutableStateOf(RoleDistributionModel()) }

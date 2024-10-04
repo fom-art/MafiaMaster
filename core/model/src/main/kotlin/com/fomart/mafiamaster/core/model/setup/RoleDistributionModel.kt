@@ -50,7 +50,7 @@ data class RoleDistributionModel(
                 ),
             RoleItem(
                 title = R.string.role_commissar,
-                icon = R.drawable.ic_sheriff,
+                icon = R.drawable.ic_commissar,
                 isSelected = hasCommissar,
                 onClick = onCommissarClicked,
             ),

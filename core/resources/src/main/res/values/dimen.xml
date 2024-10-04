@@ -30,6 +30,7 @@
     <dimen name="icon_size_small">24dp</dimen>
     <dimen name="icon_size_medium">36dp</dimen>
     <dimen name="icon_size_large">62dp</dimen>
+    <dimen name="icon_size_xlarge">96dp</dimen>
 
     <!-- Default corner radius for rounded elements -->
     <dimen name="corner_radius_small">4dp</dimen>

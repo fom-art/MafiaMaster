@@ -1,7 +1,16 @@
+import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -11,85 +20,175 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.fomart.mafiamaster.core.model.Player
+import com.fomart.mafiamaster.core.model.Role
+import com.fomart.mafiamaster.core.resources.R
+import com.fomart.mafiamaster.core.ui.components.CircleIcon
 import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
+import kotlin.random.Random
 
 @Composable
-fun FlipCard() {
-    // State to track whether the card is flipped or not
-    var isFlipped by remember { mutableStateOf(false) }
-
+fun FlipCard(
+    modifier: Modifier = Modifier,
+    players: List<Player>,
+    isFlipped: Boolean,
+    onClicked: () -> Unit
+) {
     // Animate the rotation
-    val _rotationY by animateFloatAsState(
-        targetValue = if (isFlipped) 180f else 0f
+    val cardRotation by animateFloatAsState(
+        targetValue = if (isFlipped) 180f else 0f, label = ""
     )
 
     // Animate alpha for the content change
     val frontAlpha by animateFloatAsState(
-        targetValue = if (isFlipped) 0f else 1f
-    )
-    val backAlpha by animateFloatAsState(
-        targetValue = if (isFlipped) 1f else 0f
+        targetValue = if (isFlipped) 0f else 1f, label = ""
     )
 
-    // Card composable with Y-axis flip animation
+    val backAlpha by animateFloatAsState(
+        targetValue = if (isFlipped) 1f else 0f, label = ""
+    )
+
     Card(
-        modifier = Modifier
-            .size(200.dp) // Card size
-            .clickable { isFlipped = !isFlipped } // Flip the card on click
+        modifier = modifier
+            .fillMaxWidth(0.8f)
+            .fillMaxHeight(0.75f)
             .graphicsLayer {
-                rotationY = _rotationY // Apply Y-axis rotation
+                rotationY = cardRotation // Apply Y-axis rotation
                 cameraDistance = 12f * density // Apply a camera distance to give 3D effect
             },
         shape = RoundedCornerShape(16.dp),
-//        elevation = 8.dp,
-        colors = androidx.compose.material3.CardDefaults.cardColors(
-            containerColor = Color.Transparent
-        )
     ) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { onClicked() }
+            , contentAlignment = Alignment.Center) {
             // Front side content
-            Box(
+            BackSideOfCard(
                 modifier = Modifier
                     .fillMaxSize()
                     .alpha(frontAlpha) // Control visibility with alpha
-            ) {
-                Text(
-                    text = "Front",
-                    fontSize = 24.sp,
-                    color = Color.Blue,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
+            )
             // Back side content
-            Box(
+            FrontSideOfCard(
                 modifier = Modifier
                     .fillMaxSize()
-                    .alpha(backAlpha)
+                    .alpha(backAlpha) // Control visibility with alpha
                     .graphicsLayer {
-                        rotationY = _rotationY // Apply Y-axis rotation
+                        rotationY = cardRotation // Apply Y-axis rotation
                         cameraDistance = 12f * density // Apply a camera distance to give 3D effect
-                    }// Control visibility with alpha
-            ) {
-                Text(
-                    text = "Back",
-                    fontSize = 24.sp,
-                    color = Color.Green,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
+                    },
+                player = players.first()
+            )
         }
     }
 }
 
-@Preview(showBackground = true)
+@Composable
+fun BackSideOfCard(
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
+        RandomCardBackSideImage()
+    }
+}
+
+@Composable
+fun FrontSideOfCard(
+    modifier: Modifier = Modifier,
+    player: Player
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = stringResource(id = R.string.role_player_number, player.number),
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Light
+        )
+        Spacer(modifier = Modifier.fillMaxHeight(0.05f))
+
+        BoxWithConstraints(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            val width = maxWidth * 0.37f
+
+            CircleIcon(
+                modifier = Modifier
+                    .size(width)
+                    .align(Alignment.Center),
+                painter = painterResource(id = player.role.getImageFromRole()),
+                backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                iconColor = MaterialTheme.colorScheme.surfaceVariant
+            )
+        }
+
+        Spacer(modifier = Modifier.fillMaxHeight(0.225f))
+
+        Text(
+            text = stringResource(id = player.role.getNameFromRole()),
+            style = MaterialTheme.typography.displaySmall,
+            fontWeight = FontWeight.SemiBold
+        )
+    }
+}
+
+@Composable
+fun RandomCardBackSideImage(
+    modifier: Modifier = Modifier
+) {
+    val images = listOf(
+        painterResource(id = R.drawable.img_role_card_background_1),
+        painterResource(id = R.drawable.img_role_card_background_2),
+        painterResource(id = R.drawable.img_role_card_background_3),
+    )
+
+    val randomImage = images[Random.nextInt(images.size)]
+
+    Image(
+        modifier = modifier.alpha(0.2f),
+        painter = randomImage,
+        contentDescription = "",
+        contentScale = ContentScale.Crop,
+        alignment = Alignment.Center
+    )
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
 fun FlipCardPreview() {
     MafiaMasterTheme {
-        FlipCard()
+        val players = listOf(
+            Player(number = 1, role = Role.MISTRESS),
+            Player(number = 2, role = Role.DOCTOR),
+            Player(number = 3, role = Role.CIVILIAN),
+            Player(number = 4, role = Role.MAFIA),
+            Player(number = 5, role = Role.MANIAC),
+            Player(number = 6, role = Role.CIVILIAN),
+        )
+
+        var isFlipped by remember { mutableStateOf(false) }
+
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            FlipCard(
+                modifier = Modifier.align(Alignment.Center),
+                players = players,
+                isFlipped = isFlipped,
+                onClicked = { isFlipped = !isFlipped }
+            )
+        }
     }
 }
