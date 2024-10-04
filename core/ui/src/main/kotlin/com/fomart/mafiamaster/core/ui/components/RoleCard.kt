@@ -35,9 +35,9 @@ import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
 import kotlin.random.Random
 
 @Composable
-fun FlipCard(
+fun RoleCard(
     modifier: Modifier = Modifier,
-    players: List<Player>,
+    player: Player,
     isFlipped: Boolean,
     onClicked: () -> Unit
 ) {
@@ -57,8 +57,7 @@ fun FlipCard(
 
     Card(
         modifier = modifier
-            .fillMaxWidth(0.8f)
-            .fillMaxHeight(0.75f)
+            .fillMaxSize()
             .graphicsLayer {
                 rotationY = cardRotation // Apply Y-axis rotation
                 cameraDistance = 12f * density // Apply a camera distance to give 3D effect
@@ -68,8 +67,7 @@ fun FlipCard(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable { onClicked() }
-            , contentAlignment = Alignment.Center) {
+                .clickable { onClicked() }, contentAlignment = Alignment.Center) {
             // Front side content
             BackSideOfCard(
                 modifier = Modifier
@@ -85,7 +83,7 @@ fun FlipCard(
                         rotationY = cardRotation // Apply Y-axis rotation
                         cameraDistance = 12f * density // Apply a camera distance to give 3D effect
                     },
-                player = players.first()
+                player = player
             )
         }
     }
@@ -165,16 +163,9 @@ fun RandomCardBackSideImage(
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
-fun FlipCardPreview() {
+fun RoleCardPreview() {
     MafiaMasterTheme {
-        val players = listOf(
-            Player(number = 1, role = Role.MISTRESS),
-            Player(number = 2, role = Role.DOCTOR),
-            Player(number = 3, role = Role.CIVILIAN),
-            Player(number = 4, role = Role.MAFIA),
-            Player(number = 5, role = Role.MANIAC),
-            Player(number = 6, role = Role.CIVILIAN),
-        )
+        val player = Player(number = 1, role = Role.MISTRESS)
 
         var isFlipped by remember { mutableStateOf(false) }
 
@@ -183,9 +174,9 @@ fun FlipCardPreview() {
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
         ) {
-            FlipCard(
+            RoleCard(
                 modifier = Modifier.align(Alignment.Center),
-                players = players,
+                player = player,
                 isFlipped = isFlipped,
                 onClicked = { isFlipped = !isFlipped }
             )
