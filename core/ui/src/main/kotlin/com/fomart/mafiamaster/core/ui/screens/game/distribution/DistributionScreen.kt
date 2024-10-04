@@ -10,50 +10,36 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.fomart.mafiamaster.core.model.Player
+import com.fomart.mafiamaster.core.model.Role
 import com.fomart.mafiamaster.core.ui.theme.MafiaMasterTheme
 import com.fomart.mafiamaster.core.resources.R
 import com.fomart.mafiamaster.core.ui.components.CustomFilledButton
 
 @Composable
-fun HomeScreen(
+fun DistributionScreen(
     modifier: Modifier = Modifier,
-    goToGame: () -> Unit,
-    goToRules: () -> Unit
-) {
+    canSwipe: Boolean,
+    players: List<Player>,
+    ) {
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
             .padding(dimensionResource(id = R.dimen.padding_medium)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
     ) {
-        Text(
-            modifier = Modifier,
-            text = stringResource(id = R.string.app_name),
-            style = MaterialTheme.typography.displayMedium,
-            fontWeight = FontWeight.Bold
-        )
-        Row(modifier = Modifier.fillMaxWidth()) {
-            CustomFilledButton(
-                modifier = Modifier
-                    .padding(end = dimensionResource(R.dimen.padding_small))
-                    .weight(1f),
-                onClick = goToGame,
-                text = stringResource(id = R.string.menu_play)
-            )
-            CustomFilledButton(
-                modifier = Modifier
-                    .padding(start = dimensionResource(R.dimen.padding_small))
-                    .weight(1f),
-                onClick = goToRules,
-                text = stringResource(id = R.string.menu_rules)
-            )
-        }
+
     }
 }
 
@@ -62,11 +48,38 @@ fun HomeScreen(
     uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable
-fun HomeScreenPreview() {
+fun DistributionScreenPreview() {
+    val players = listOf(
+        Player(
+            number = 1,
+            role = Role.MISTRESS
+        ),
+        Player(
+            number = 2,
+            role = Role.MANIAC
+        ),
+        Player(
+            number = 3,
+            role = Role.CIVILIAN
+        ),
+        Player(
+            number = 4,
+            role = Role.CIVILIAN
+        ),
+        Player(
+            number = 5,
+            role = Role.DOCTOR
+        ),
+        Player(
+            number = 6,
+            role = Role.COMMISSAR
+        )
+    )
+    var canSwipe by remember { mutableStateOf(true) }
     MafiaMasterTheme {
-        HomeScreen(
-            goToGame = { },
-            goToRules = {}
+        DistributionScreen(
+            canSwipe = canSwipe,
+            players = players
         )
     }
 }

@@ -29,9 +29,12 @@ import com.fomart.mafiamaster.core.ui.components.RoleItemComponent
 fun DefaultScaffoldScreen(
     modifier: Modifier = Modifier,
     roleDistributionModel: RoleDistributionModel,
-    roleItems: List<RoleItem>,
-    setPlayersTo: (Int) -> Unit,
     playerCounts: List<Int> = (6..12).toList(),
+    onMistressClicked: () -> Unit,
+    onDoctorClicked: () -> Unit,
+    onManiacClicked: () -> Unit,
+    onCommissarClicked: () -> Unit,
+    setPlayersTo: (Int) -> Unit,
     goBack: () -> Unit,
     startGame: () -> Unit
 ) {
@@ -53,9 +56,12 @@ fun DefaultScaffoldScreen(
         SetupBody(
             modifier = Modifier.padding(innerPadding),
             roleDistributionModel = roleDistributionModel,
-            roleItems = roleItems,
             playerCounts = playerCounts,
             setPlayersTo = setPlayersTo,
+            onMistressClicked = onMistressClicked,
+            onDoctorClicked = onDoctorClicked,
+            onManiacClicked = onManiacClicked,
+            onCommissarClicked = onCommissarClicked,
             startGame = startGame
         )
     }
@@ -65,9 +71,12 @@ fun DefaultScaffoldScreen(
 fun SetupBody(
     modifier: Modifier = Modifier,
     roleDistributionModel: RoleDistributionModel,
-    roleItems: List<RoleItem>,
     playerCounts: List<Int>,
     setPlayersTo: (Int) -> Unit,
+    onMistressClicked: () -> Unit,
+    onDoctorClicked: () -> Unit,
+    onManiacClicked: () -> Unit,
+    onCommissarClicked: () -> Unit,
     startGame: () -> Unit
 ) {
     Column(
@@ -76,7 +85,14 @@ fun SetupBody(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LazyColumn(modifier = Modifier.weight(1f)) {
-            items(roleItems) { roleItem ->
+            items(
+                roleDistributionModel.toRoleItems(
+                    onMistressClicked = onMistressClicked,
+                    onDoctorClicked = onDoctorClicked,
+                    onManiacClicked = onManiacClicked,
+                    onCommissarClicked = onCommissarClicked,
+                )
+            ) { roleItem ->
                 RoleItemComponent(roleItem = roleItem)
             }
         }
@@ -96,94 +112,45 @@ fun SetupBody(
 )
 @Composable
 fun SetupScreenPreview() {
-    var roleDistributionModel by remember {
-        mutableStateOf(
-            RoleDistributionModel(
-                totalPlayers = 6,
-                mafiaCount = 2,
-                hasDon = false,
-            )
-        )
-    }
-
-    var hasMistress by remember { mutableStateOf(false) }
-    var hasDoctor by remember { mutableStateOf(false) }
-    var hasManiac by remember { mutableStateOf(false) }
-    var hasCommissar by remember { mutableStateOf(false) }
+    var roleDistributionModel by remember { mutableStateOf(RoleDistributionModel()) }
 
     val setPlayersTo: (Int) -> Unit = { totalPlayers ->
-        val hasDon = totalPlayers >= 10
-        val mafiaCount: Int = totalPlayers / 3 - hasDon.toInt() - hasMistress.toInt()
+        val hasDon = totalPlayers >= 9
+        val mafiaCount: Int =
+            totalPlayers / 3 - hasDon.toInt() - roleDistributionModel.hasMistress.toInt()
         roleDistributionModel = roleDistributionModel.copy(
             totalPlayers = totalPlayers,
             hasDon = hasDon,
             mafiaCount = mafiaCount
         )
-
-    }
-
-    val createRoleItems: () -> List<RoleItem> = {
-        listOf(
-            RoleItem(
-                title = R.string.role_mafia,
-                icon = R.drawable.ic_mafia,
-                count = roleDistributionModel.mafiaCount,
-                isSelected = true,
-            ),
-            RoleItem(
-                title = R.string.role_don,
-                icon = R.drawable.ic_don,
-                isSelected = roleDistributionModel.hasDon,
-            ),
-            RoleItem(
-                title = R.string.role_mistress,
-                icon = R.drawable.ic_mistress,
-                isSelected = hasMistress,
-                onClick = {
-                    hasMistress = !hasMistress
-                    setPlayersTo(roleDistributionModel.totalPlayers)
-                },
-            ),
-            RoleItem(
-                title = R.string.role_doctor,
-                icon = R.drawable.ic_doctor,
-                isSelected = hasDoctor,
-                onClick = { hasDoctor = !hasDoctor },
-            ),
-            RoleItem(
-                title = R.string.role_maniac,
-                icon = R.drawable.ic_maniac,
-                isSelected = hasManiac,
-                onClick = { hasManiac = !hasManiac },
-
-                ),
-            RoleItem(
-                title = R.string.role_commissar,
-                icon = R.drawable.ic_sheriff,
-                isSelected = hasCommissar,
-                onClick = { hasCommissar = !hasCommissar },
-            ),
-        )
-    }
-
-
-    var roleItems by remember {
-        mutableStateOf(createRoleItems())
-    }
-
-    LaunchedEffect(roleDistributionModel, hasMistress, hasDoctor, hasManiac, hasCommissar) {
-        roleItems = createRoleItems()
     }
 
     MafiaMasterTheme {
         DefaultScaffoldScreen(
-            roleItems = roleItems,
             roleDistributionModel = roleDistributionModel,
             setPlayersTo = setPlayersTo,
             goBack = {},
+            onMistressClicked = {
+                roleDistributionModel =
+                    roleDistributionModel.copy(hasMistress = !roleDistributionModel.hasMistress)
+                setPlayersTo(roleDistributionModel.totalPlayers)
+            },
+            onDoctorClicked = {
+                roleDistributionModel =
+                    roleDistributionModel.copy(hasDoctor = !roleDistributionModel.hasDoctor)
+            },
+            onManiacClicked = {
+                roleDistributionModel =
+                    roleDistributionModel.copy(hasManiac = !roleDistributionModel.hasManiac)
+            },
+            onCommissarClicked = {
+                roleDistributionModel =
+                    roleDistributionModel.copy(hasCommissar = !roleDistributionModel.hasCommissar)
+            },
             startGame = {}
         )
     }
 }
+
 
 fun Boolean.toInt() = if (this) 1 else 0
