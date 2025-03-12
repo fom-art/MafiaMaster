@@ -1,7 +1,5 @@
 <resources>
-    <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryVariant">@color/black</item>
-    </style>
+    <style name="Theme.MafiaMaster" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="CustomToolBarStyle">
         <item name="android:textColorPrimary">@color/toolbarTextAndIconColor</item>
