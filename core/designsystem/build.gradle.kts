@@ -12,4 +12,5 @@ dependencies {
     implementation(projects.core.resources)
 
     implementation(libs.androidx.ui.text.google.fonts)
+    api(libs.androidx.material3.adaptive.navigation.suite)
 }

@@ -27,6 +27,7 @@ koinComposeMultiplatform = "1.2.0-Beta4"
 kotlinxCoroutines = "1.8.0"
 material = "1.12.0"
 ksp = "2.0.20-1.0.25"
+material3Adaptive = "1.0.0-alpha13"
 materialIconsExtended = "1.7.5"
 androidxComposeRuntimeTracing = "1.7.6"
 tracing = "1.2.0"
@@ -47,6 +48,7 @@ androidx-compose-runtime-tracing = { group = "androidx.compose.runtime", name = 
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+androidx-material3-adaptive = { module = "androidx.compose.material3:material3-adaptive", version.ref = "material3Adaptive" }
 androidx-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
