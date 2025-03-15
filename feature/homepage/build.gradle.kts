@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.fomart.mafiamaster.feature.game_setup"
+    namespace = "com.fomart.mafiamaster.feature.homepage"
 }

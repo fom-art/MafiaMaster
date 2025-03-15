@@ -3,8 +3,14 @@ package com.fomart.mafiamaster.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import com.fomart.mafiamaster.navigation.graphs.HomepageGraph
-import com.fomart.mafiamaster.navigation.graphs.homepageGraph
+import com.fomart.mafiamaster.feature.game_setup.navigation.gameScreen
+import com.fomart.mafiamaster.feature.game_setup.navigation.gameSetupScreen
+import com.fomart.mafiamaster.feature.game_setup.navigation.navigateToGame
+import com.fomart.mafiamaster.feature.game_setup.navigation.navigateToGameSetup
+import com.fomart.mafiamaster.feature.homepage.navigation.HomepageScreen
+import com.fomart.mafiamaster.feature.homepage.navigation.homepageScreen
+import com.fomart.mafiamaster.feature.roles_distribution.navigation.navigateToRolesDistribution
+import com.fomart.mafiamaster.feature.roles_distribution.navigation.rolesDistributionScreen
 import com.fomart.mafiamaster.ui.MafiaMasterState
 
 @Composable
@@ -17,9 +23,14 @@ fun MafiaMasterNavHost(
 
     NavHost(
         navController = navController,
-        startDestination = HomepageGraph,
+        startDestination = HomepageScreen,
         modifier = modifier,
-    ){
-        homepageGraph(navController = navController)
+    ) {
+        homepageScreen(navigateToGameSetup = navController::navigateToGameSetup)
+        gameSetupScreen(navigateToRolesDistribution = {
+            navController::navigateToRolesDistribution
+        })
+        rolesDistributionScreen(navigateToGame = navController::navigateToGame)
+        gameScreen()
     }
 }

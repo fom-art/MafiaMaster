@@ -47,8 +47,19 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
+    implementation(projects.core.model)
     implementation(projects.core.resources)
     implementation(projects.data.players)
+
+    implementation(projects.feature.game)
+    implementation(projects.feature.gameSetup)
+    implementation(projects.feature.gamesArchive)
+    implementation(projects.feature.homepage)
+    implementation(projects.feature.playerDetails)
+    implementation(projects.feature.playersData)
+    implementation(projects.feature.rolesDistribution)
+    implementation(projects.feature.rules)
+    implementation(projects.feature.settings)
 
     //Koin
     api(libs.koin.core)
