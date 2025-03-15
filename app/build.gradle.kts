@@ -69,6 +69,12 @@ dependencies {
     implementation(libs.koin.androidx.workmanager)
     implementation(libs.koin.compose.viewmodel)
 
+    // Koin test for Android
+    androidTestImplementation (libs.koin.test)
+    androidTestImplementation (libs.koin.test.junit4)
+
+    androidTestImplementation(libs.junit)
+
     //Compose Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
@@ -76,5 +82,4 @@ dependencies {
     // AndroidX Core & Lifecycle
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-
 }

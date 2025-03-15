@@ -27,9 +27,11 @@ fun MafiaMasterNavHost(
         modifier = modifier,
     ) {
         homepageScreen(navigateToGameSetup = navController::navigateToGameSetup)
-        gameSetupScreen(navigateToRolesDistribution = {
-            navController::navigateToRolesDistribution
-        })
+        gameSetupScreen(
+            navigateToRolesDistribution =
+                navController::navigateToRolesDistribution,
+            goBack = navController::navigateUp
+        )
         rolesDistributionScreen(navigateToGame = navController::navigateToGame)
         gameScreen()
     }

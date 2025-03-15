@@ -1,4 +1,4 @@
-package com.fomart.mafiamaster.core.designsystem.screens.game.distribution
+package com.fomart.mafiamaster.feature.roles_distribution
 
 import RoleCard
 import android.content.res.Configuration

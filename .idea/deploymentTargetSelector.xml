@@ -25,7 +25,7 @@
       <SelectionState runConfigName="FlipCardPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DistributionScreenPreview">
+      <SelectionState runConfigName="startKoin_viewModels_initialized()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
