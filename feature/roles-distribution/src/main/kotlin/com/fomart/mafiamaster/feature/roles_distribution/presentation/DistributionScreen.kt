@@ -1,13 +1,15 @@
-package com.fomart.mafiamaster.feature.roles_distribution
+package com.fomart.mafiamaster.feature.roles_distribution.presentation
 
 import RoleCard
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -44,21 +46,21 @@ fun DistributionScreen(
         }
 
         VerticalPager(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier,
             state = pagerState,
             userScrollEnabled = scrollEnabled,
         ) { playerIndex ->
             // Page Item
             var isFlipped by remember { mutableStateOf(false) }
-
+            Spacer(Modifier.fillMaxHeight(0.15f))
             RoleCard(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
-                    .fillMaxHeight(0.75f),
+                    .fillMaxHeight(0.70f),
                 player = players[playerIndex],
                 isFlipped = isFlipped,
                 onClicked = { isFlipped = !isFlipped })
+            Spacer(Modifier.fillMaxHeight(0.15f))
         }
     }
 }

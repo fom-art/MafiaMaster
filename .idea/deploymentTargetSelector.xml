@@ -22,10 +22,10 @@
       <SelectionState runConfigName="RoleItemComponentPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="FlipCardPreview">
+      <SelectionState runConfigName="startKoin_viewModels_initialized()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="startKoin_viewModels_initialized()">
+      <SelectionState runConfigName="DistributionScreenPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

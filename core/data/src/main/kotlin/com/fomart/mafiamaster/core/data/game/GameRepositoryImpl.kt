@@ -1,5 +1,6 @@
 package com.fomart.mafiamaster.core.data.game
 
+import com.diamondedge.logging.KmLog
 import com.fomart.mafiamaster.core.data.core.EmptyResult
 import com.fomart.mafiamaster.core.data.core.Result
 import com.fomart.mafiamaster.core.data.game.domain.GameCreationError
@@ -12,7 +13,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-class GameRepositoryImpl: GameRepository {
+class GameRepositoryImpl(
+    private val logger: KmLog
+) : GameRepository {
     private val _gameState: MutableStateFlow<Game?> = MutableStateFlow(null)
     override val gameState: StateFlow<Game?> get() = _gameState
 
@@ -29,8 +32,9 @@ class GameRepositoryImpl: GameRepository {
 
         // Add mafia roles
         if (setup.hasDon) roles.add(Role.Don())
-        repeat(setup.mafiaCount - if (setup.hasDon) 1 else 0) {
-            roles.add(Role.Mistress())
+        if (setup.hasMistress) roles.add(Role.Mistress())
+        repeat(setup.mafiaCount) {
+            roles.add(Role.Mafia())
         }
 
         // Add active civilian roles
@@ -48,6 +52,12 @@ class GameRepositoryImpl: GameRepository {
 
         val players = roles.mapIndexed { index, role ->
             Player(number = index + 1, role = role)
+        }
+
+        // Logging the result
+        logger.info { "=== Game Setup ===" }
+        players.forEach { player ->
+            logger.info { "Player #${player.number}: ${player.role::class.simpleName}" }
         }
 
         return Game(players)

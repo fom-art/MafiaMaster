@@ -18,6 +18,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 kotlinComposeCompilerPlugin = "2.0.0"
 kotlinComposeCompilerPluginEmbeddable = "2.0.20"
+kotlinLoggingJvm = "3.0.5"
 kotlinxDatetime = "0.5.0"
 kotlinxSerializationJson = "1.6.3"
 lifecycleRuntimeKtx = "2.8.6"
@@ -27,6 +28,7 @@ koinAndroid = "1.0"
 koin = "4.0.0"
 koinComposeMultiplatform = "1.2.0-Beta4"
 kotlinxCoroutines = "1.8.0"
+loggingAndroid = "2.0.3"
 material = "1.12.0"
 ksp = "2.0.20-1.0.25"
 material3Adaptive = "1.0.0-alpha13"
@@ -73,7 +75,9 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 kotlin-compose-compiler-plugin = { module = "org.jetbrains.kotlin:kotlin-compose-compiler-plugin", version.ref = "kotlinComposeCompilerPlugin" }
 kotlin-compose-compiler-plugin-embeddable = { module = "org.jetbrains.kotlin:kotlin-compose-compiler-plugin-embeddable", version.ref = "kotlinComposeCompilerPluginEmbeddable" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlin-logging-jvm = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlinLoggingJvm" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+logging-android = { module = "com.diamondedge:logging-android", version.ref = "loggingAndroid" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Kotlin

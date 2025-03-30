@@ -61,6 +61,9 @@ dependencies {
     implementation(projects.feature.rules)
     implementation(projects.feature.settings)
 
+    //Logging
+    implementation(libs.logging.android)
+
     //Koin
     api(libs.koin.core)
     implementation(libs.koin.android)

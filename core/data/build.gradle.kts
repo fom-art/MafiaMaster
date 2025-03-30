@@ -10,6 +10,9 @@ dependencies{
     implementation(projects.core.model)
     implementation(libs.kotlinx.coroutines.android)
 
+    //Logging
+    implementation(libs.logging.android)
+
     //Koin
     api(libs.koin.core)
     implementation(libs.koin.android)

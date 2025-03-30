@@ -6,5 +6,5 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val gameModule = module {
-    single { GameRepositoryImpl() } bind GameRepository::class
+    single { GameRepositoryImpl(get()) } bind GameRepository::class
 }

@@ -5,34 +5,38 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.fomart.mafiamaster.core.designsystem.components.CircleIcon
+import com.fomart.mafiamaster.core.designsystem.theme.MafiaMasterTheme
 import com.fomart.mafiamaster.core.model.Player
 import com.fomart.mafiamaster.core.model.Role
 import com.fomart.mafiamaster.core.resources.R
-import com.fomart.mafiamaster.core.designsystem.components.CircleIcon
-import com.fomart.mafiamaster.core.designsystem.theme.MafiaMasterTheme
 import kotlin.random.Random
 
 @Composable
@@ -71,16 +75,18 @@ fun RoleCard(
                 .clickable { onClicked() }, contentAlignment = Alignment.Center
         ) {
             // Front side content
+
             BackSideOfCard(
                 modifier = Modifier
                     .fillMaxSize()
                     .alpha(frontAlpha) // Control visibility with alpha
             )
+
             // Back side content
             FrontSideOfCard(
                 modifier = Modifier
                     .fillMaxSize()
-                    .alpha(backAlpha) // Control visibility with alpha
+                    .alpha(backAlpha)// Control visibility with alpha
                     .graphicsLayer {
                         rotationY = cardRotation // Apply Y-axis rotation
                         cameraDistance = 12f * density // Apply a camera distance to give 3D effect
@@ -95,9 +101,7 @@ fun RoleCard(
 fun BackSideOfCard(
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier) {
-        RandomCardBackSideImage()
-    }
+    RandomCardBackSideImage(modifier = modifier)
 }
 
 @Composable
@@ -113,7 +117,7 @@ fun FrontSideOfCard(
         Text(
             text = stringResource(id = R.string.role_player_number, player.number),
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Light
+            fontWeight = FontWeight.Normal
         )
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
 
@@ -125,15 +129,15 @@ fun FrontSideOfCard(
             backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant,
             iconColor = MaterialTheme.colorScheme.surfaceVariant
         )
+
+        Spacer(modifier = Modifier.fillMaxHeight(0.225f))
+
+        Text(
+            text = stringResource(id = player.role.getNameFromRole()),
+            style = MaterialTheme.typography.displaySmall,
+            fontWeight = FontWeight.SemiBold
+        )
     }
-
-    Spacer(modifier = Modifier.fillMaxHeight(0.225f))
-
-    Text(
-        text = stringResource(id = player.role.getNameFromRole()),
-        style = MaterialTheme.typography.displaySmall,
-        fontWeight = FontWeight.SemiBold
-    )
 }
 
 
@@ -147,7 +151,10 @@ fun RandomCardBackSideImage(
         painterResource(id = R.drawable.img_role_card_background_3),
     )
 
-    val randomImage = images[Random.nextInt(images.size)]
+    var randomImage: Painter = images[0]
+    LaunchedEffect(Unit) {
+        randomImage = images[Random.nextInt(images.size)]
+    }
 
     Image(
         modifier = modifier.alpha(0.2f),
