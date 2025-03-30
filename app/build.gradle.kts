@@ -49,7 +49,7 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.model)
     implementation(projects.core.resources)
-    implementation(projects.data.players)
+    implementation(projects.core.data)
 
     implementation(projects.feature.game)
     implementation(projects.feature.gameSetup)

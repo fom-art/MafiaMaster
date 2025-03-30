@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -67,7 +68,8 @@ fun RoleCard(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable { onClicked() }, contentAlignment = Alignment.Center) {
+                .clickable { onClicked() }, contentAlignment = Alignment.Center
+        ) {
             // Front side content
             BackSideOfCard(
                 modifier = Modifier
@@ -115,30 +117,25 @@ fun FrontSideOfCard(
         )
         Spacer(modifier = Modifier.fillMaxHeight(0.05f))
 
-        BoxWithConstraints(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            val width = maxWidth * 0.37f
-
-            CircleIcon(
-                modifier = Modifier
-                    .size(width)
-                    .align(Alignment.Center),
-                painter = painterResource(id = player.role.getImageFromRole()),
-                backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                iconColor = MaterialTheme.colorScheme.surfaceVariant
-            )
-        }
-
-        Spacer(modifier = Modifier.fillMaxHeight(0.225f))
-
-        Text(
-            text = stringResource(id = player.role.getNameFromRole()),
-            style = MaterialTheme.typography.displaySmall,
-            fontWeight = FontWeight.SemiBold
+        CircleIcon(
+            modifier = Modifier
+                .fillMaxWidth(0.37f)
+                .aspectRatio(1f),
+            painter = painterResource(id = player.role.getImageFromRole()),
+            backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            iconColor = MaterialTheme.colorScheme.surfaceVariant
         )
     }
+
+    Spacer(modifier = Modifier.fillMaxHeight(0.225f))
+
+    Text(
+        text = stringResource(id = player.role.getNameFromRole()),
+        style = MaterialTheme.typography.displaySmall,
+        fontWeight = FontWeight.SemiBold
+    )
 }
+
 
 @Composable
 fun RandomCardBackSideImage(
@@ -165,7 +162,7 @@ fun RandomCardBackSideImage(
 @Composable
 fun RoleCardPreview() {
     MafiaMasterTheme {
-        val player = Player(number = 1, role = Role.MISTRESS)
+        val player = Player(number = 1, role = Role.Mistress())
 
         var isFlipped by remember { mutableStateOf(false) }
 

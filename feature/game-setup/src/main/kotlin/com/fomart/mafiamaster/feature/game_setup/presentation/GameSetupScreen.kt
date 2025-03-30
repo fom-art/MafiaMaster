@@ -21,11 +21,12 @@ import com.fomart.mafiamaster.core.designsystem.components.DefaultTopBar
 import com.fomart.mafiamaster.core.designsystem.components.HorizontalPlayerCountPicker
 import com.fomart.mafiamaster.core.designsystem.components.RoleItemComponent
 import com.fomart.mafiamaster.core.designsystem.theme.MafiaMasterTheme
+import com.fomart.mafiamaster.core.model.GameSetup
 
 @Composable
 fun GameSetupScreen(
     modifier: Modifier = Modifier,
-    state: GameSetupState,
+    state: GameSetup,
     onAction: (GameSetupIntent) -> Unit
 ) {
     Scaffold(
@@ -48,7 +49,7 @@ fun GameSetupScreen(
 @Composable
 fun GameSetupBody(
     modifier: Modifier = Modifier,
-    state: GameSetupState,
+    state: GameSetup,
     onAction: (GameSetupIntent) -> Unit
 ) {
     Column(
@@ -83,7 +84,7 @@ fun GameSetupBody(
 @Preview(showBackground = true)
 @Composable
 fun SetupScreenPreview() {
-    var state by remember { mutableStateOf(GameSetupState()) }
+    var state by remember { mutableStateOf(GameSetup()) }
 
     MafiaMasterTheme {
         GameSetupScreen(

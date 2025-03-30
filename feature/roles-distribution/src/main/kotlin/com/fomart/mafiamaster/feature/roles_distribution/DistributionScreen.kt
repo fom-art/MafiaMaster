@@ -72,27 +72,27 @@ fun DistributionScreenPreview() {
     val players = listOf(
         Player(
             number = 1,
-            role = Role.MISTRESS
+            role = Role.Mistress()
         ),
         Player(
             number = 2,
-            role = Role.MANIAC
+            role = Role.Maniac()
         ),
         Player(
             number = 3,
-            role = Role.CIVILIAN
+            role = Role.Civilian()
         ),
         Player(
             number = 4,
-            role = Role.CIVILIAN
+            role = Role.Civilian()
         ),
         Player(
             number = 5,
-            role = Role.DOCTOR
+            role = Role.Doctor()
         ),
         Player(
             number = 6,
-            role = Role.MANIAC
+            role = Role.Maniac()
         )
     )
     var canSwipe by remember { mutableStateOf(true) }

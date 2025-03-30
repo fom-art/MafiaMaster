@@ -2,37 +2,72 @@ package com.fomart.mafiamaster.core.model
 
 import com.fomart.mafiamaster.core.resources.R
 
-enum class Role {
-    CIVILIAN,
-    MAFIA,
-    DON,
-    MISTRESS,
-    DOCTOR,
-    COMMISSAR,
-    MANIAC;
+//sealed class Role {
+//    object Civilian: Role()
+//    data object Mafia(val ): Role()
+//    object Don: Role()
+//    object Civilian: Role()
+//    object Civilian: Role()
+//    object Civilian: Role()
+//    object Civilian: Role()
+//    object Civilian: Role()
+//    MAFIA,
+//    DON,
+//    MISTRESS,
+//    DOCTOR,
+//    COMMISSAR,
+//    MANIAC;
+//
+//
+//
+//
+//}
 
-    fun getImageFromRole(): Int {
-        return when (this) {
-            CIVILIAN -> R.drawable.ic_civillian
-            MAFIA -> R.drawable.ic_mafia
-            DON -> R.drawable.ic_don
-            MISTRESS -> R.drawable.ic_mistress
-            DOCTOR -> R.drawable.ic_doctor
-            COMMISSAR -> R.drawable.ic_commissar
-            MANIAC -> R.drawable.ic_maniac
+sealed class Role {
+    open class Civilian : Role()
+    abstract class ActiveCivilian : Civilian() {
+        open fun makeAction() {}
+    }
+    open class Mafia : Role()
+    class Commissar() : ActiveCivilian() {
+        override fun makeAction() {
+            TODO("Not yet implemented")
         }
     }
+    class Doctor() : ActiveCivilian() {
+        override fun makeAction() {
+            TODO("Not yet implemented")
+        }
+    }
+    class Maniac() : ActiveCivilian() {
+        override fun makeAction() {
+            TODO("Not yet implemented")
+        }
+    }
+    class Don() : Mafia()
+    class Mistress() : Mafia()
 
     fun getNameFromRole(): Int {
         return when (this) {
-            CIVILIAN -> R.string.role_citizen
-            MAFIA -> R.string.role_mafia
-            DON -> R.string.role_don
-            MISTRESS -> R.string.role_mistress
-            DOCTOR -> R.string.role_doctor
-            COMMISSAR -> R.string.role_commissar
-            MANIAC -> R.string.role_maniac
+            is Don -> R.string.role_don
+            is Mistress -> R.string.role_mistress
+            is Doctor -> R.string.role_doctor
+            is Commissar -> R.string.role_commissar
+            is Maniac -> R.string.role_maniac
+            is Mafia -> R.string.role_mafia
+            is Civilian -> R.string.role_citizen
+        }
+    }
+
+    fun getImageFromRole(): Int {
+        return when (this) {
+            is Don -> R.drawable.ic_don
+            is Mistress -> R.drawable.ic_mistress
+            is Doctor -> R.drawable.ic_doctor
+            is Commissar -> R.drawable.ic_commissar
+            is Maniac -> R.drawable.ic_maniac
+            is Mafia ->R.drawable.ic_mafia
+            is Civilian -> R.drawable.ic_civillian
         }
     }
 }
-

@@ -1,9 +1,9 @@
-package com.fomart.mafiamaster.feature.game_setup.presentation
+package com.fomart.mafiamaster.core.model
 
 import com.fomart.mafiamaster.core.model.setup.RoleItem
 import com.fomart.mafiamaster.core.resources.R
 
-data class GameSetupState(
+data class GameSetup(
     val totalPlayers: Int = 0,
     val hasDon: Boolean = false,
     val mafiaCount: Int = 0,

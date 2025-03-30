@@ -10,6 +10,6 @@ import org.koin.core.logger.Level.DEBUG
 fun KoinApplication.initKoin(context: Context) {
     androidContext(context)
     androidLogger(DEBUG)
-    modules(featureModule)
+    modules(appModule)
     printLogger()
 }

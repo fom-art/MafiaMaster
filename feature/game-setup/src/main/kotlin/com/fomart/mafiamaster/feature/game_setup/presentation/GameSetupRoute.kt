@@ -11,12 +11,14 @@ fun GameSetupRoute(
     navigateToRolesDistribution: () -> Unit,
     goBack: () -> Unit,
 ) {
+    if (viewModel.shouldGoToRolesDistribution) {
+        navigateToRolesDistribution()
+    }
     GameSetupScreen(
         modifier = modifier,
         state = viewModel.state,
         onAction = { action ->
             when(action) {
-                is GameSetupIntent.StartGame -> navigateToRolesDistribution()
                 is GameSetupIntent.GoBack -> goBack()
                 else -> Unit
             }

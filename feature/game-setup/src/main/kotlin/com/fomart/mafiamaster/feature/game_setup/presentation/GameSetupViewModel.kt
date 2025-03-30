@@ -4,9 +4,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.fomart.mafiamaster.core.data.core.Result
+import com.fomart.mafiamaster.core.data.game.domain.GameRepository
+import com.fomart.mafiamaster.core.model.GameSetup
 
-class GameSetupViewModel : ViewModel() {
-    var state by mutableStateOf(GameSetupState())
+class GameSetupViewModel(
+    private val gameRepository: GameRepository
+) : ViewModel() {
+    var state by mutableStateOf(GameSetup())
+        private set
+    var shouldGoToRolesDistribution by mutableStateOf(false)
         private set
 
     fun onAction(action: GameSetupIntent) {
@@ -16,6 +23,7 @@ class GameSetupViewModel : ViewModel() {
             GameSetupIntent.ToggleDoctor -> toggleDoctor()
             GameSetupIntent.ToggleManiac -> toggleManiac()
             GameSetupIntent.ToggleCommissar -> toggleCommissar()
+            GameSetupIntent.StartGame -> startGame()
             else -> {}
         }
     }
@@ -45,5 +53,13 @@ class GameSetupViewModel : ViewModel() {
 
     private fun toggleCommissar() {
         state = state.copy(hasCommissar = !state.hasCommissar)
+    }
+
+    private fun startGame() {
+        val result = gameRepository.createGame(state)
+
+        if (result is Result.Success) {
+            shouldGoToRolesDistribution = true
+        }
     }
 }
