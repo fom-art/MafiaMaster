@@ -1,35 +1,36 @@
+rootProject.name = "MafiaMaster"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
 }
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "MafiaMaster"
-
-include(":app")
-include(":core:designsystem")
-include(":core:model")
-include(":core:resources")
-include(":core:data")
-include(":feature:game")
-include(":feature:game-setup")
-include(":feature:games-archive")
-include(":feature:homepage")
-include(":feature:players-data")
-include(":feature:player-details")
-include(":feature:roles-distribution")
-include(":feature:rules")
-include(":feature:settings")
+include(":androidApp")
+include(":shared:app")
+include(":shared:core:data")
+include(":shared:core:designsystem")
+include(":shared:core:model")
+include(":shared:core:resources")
+include(":shared:core:utils")
+include(":shared:feature:game")
+include(":shared:feature:game-setup")
+include(":shared:feature:games-archive")
+include(":shared:feature:homepage")
+include(":shared:feature:players-data")
+include(":shared:feature:player-details")
+include(":shared:feature:roles-distribution")
+include(":shared:feature:rules")
+include(":shared:feature:settings")

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application Name -->
+    <string name="app_name">Mafia Master</string>
+
+    <!-- Main Menu -->
+    <string name="menu_play">Play</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_about">About</string>
+    <string name="menu_rules">Rules</string>
+    <string name="menu_exit">Exit</string>
+    <string name="menu_go_back">Go Back</string>
+
+    <!-- Setup Screen -->
+    <string name="setup_title">Setup</string>
+
+    <!-- Game Screen -->
+    <string name="game_start">Start Game</string>
+    <string name="game_pause">Pause</string>
+    <string name="game_resume">Resume</string>
+    <string name="game_end">End Game</string>
+    <string name="game_winner">The Winner is</string>
+
+    <!-- Role Assignment -->
+    <string name="role_assignment_title">Assign Roles</string>
+    <string name="role_player_number">Player %d</string>
+    <string name="role_mafia">Mafia</string>
+    <string name="role_don">Don</string>
+    <string name="role_mistress">Mistress</string>
+    <string name="role_doctor">Doctor</string>
+    <string name="role_maniac">Maniac</string>
+    <string name="role_commissar">Commissar</string>
+    <string name="role_citizen">Citizen</string>
+
+    <!-- Notifications -->
+    <string name="notification_victory">Victory!</string>
+    <string name="notification_defeat">Defeat!</string>
+    <string name="notification_eliminated">You have been eliminated!</string>
+    <string name="notification_night_phase">Night Phase</string>
+    <string name="notification_day_phase">Day Phase</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_music">Music</string>
+    <string name="settings_sound">Sound Effects</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_vibration">Vibration</string>
+    <string name="settings_save">Save Settings</string>
+
+    <!-- Confirmation Dialogs -->
+    <string name="confirm_exit_title">Exit Game</string>
+    <string name="confirm_exit_message">Are you sure you want to exit?</string>
+    <string name="confirm_yes">Yes</string>
+    <string name="confirm_no">No</string>
+
+    <!-- About Screen -->
+    <string name="about_title">About Mafia Master</string>
+    <string name="about_description">Mafia Master is a thrilling multiplayer game where players take on the roles of Mafia, Detectives, and Citizens. Outsmart your opponents and dominate the city!</string>
+
+    <!-- Miscellaneous -->
+    <string name="loading">Loading...</string>
+    <string name="error_generic">Something went wrong, please try again.</string>
+    <string name="connection_lost">Connection lost, attempting to reconnect...</string>
+</resources>

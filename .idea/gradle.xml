@@ -22,24 +22,27 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/androidApp" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
-            <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core/data" />
-            <option value="$PROJECT_DIR$/core/designsystem" />
-            <option value="$PROJECT_DIR$/core/model" />
-            <option value="$PROJECT_DIR$/core/resources" />
-            <option value="$PROJECT_DIR$/feature" />
-            <option value="$PROJECT_DIR$/feature/game" />
-            <option value="$PROJECT_DIR$/feature/game-setup" />
-            <option value="$PROJECT_DIR$/feature/games-archive" />
-            <option value="$PROJECT_DIR$/feature/homepage" />
-            <option value="$PROJECT_DIR$/feature/player-details" />
-            <option value="$PROJECT_DIR$/feature/players-data" />
-            <option value="$PROJECT_DIR$/feature/roles-distribution" />
-            <option value="$PROJECT_DIR$/feature/rules" />
-            <option value="$PROJECT_DIR$/feature/settings" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/shared/app" />
+            <option value="$PROJECT_DIR$/shared/core" />
+            <option value="$PROJECT_DIR$/shared/core/data" />
+            <option value="$PROJECT_DIR$/shared/core/designsystem" />
+            <option value="$PROJECT_DIR$/shared/core/model" />
+            <option value="$PROJECT_DIR$/shared/core/resources" />
+            <option value="$PROJECT_DIR$/shared/core/utils" />
+            <option value="$PROJECT_DIR$/shared/feature" />
+            <option value="$PROJECT_DIR$/shared/feature/game" />
+            <option value="$PROJECT_DIR$/shared/feature/game-setup" />
+            <option value="$PROJECT_DIR$/shared/feature/games-archive" />
+            <option value="$PROJECT_DIR$/shared/feature/homepage" />
+            <option value="$PROJECT_DIR$/shared/feature/player-details" />
+            <option value="$PROJECT_DIR$/shared/feature/players-data" />
+            <option value="$PROJECT_DIR$/shared/feature/roles-distribution" />
+            <option value="$PROJECT_DIR$/shared/feature/rules" />
+            <option value="$PROJECT_DIR$/shared/feature/settings" />
           </set>
         </option>
       </GradleProjectSettings>

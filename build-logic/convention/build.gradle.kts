@@ -4,8 +4,6 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.build_logic."
-
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -23,6 +21,8 @@ dependencies {
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.gradledoctor.plugin)
+    compileOnly(libs.dependency.analysis.gradlePlugin)
 }
 
 tasks {
@@ -34,25 +34,37 @@ tasks {
 
 gradlePlugin {
     plugins {
-        register("applicationCompose") {
-            id = "build.logic.application.compose"
-            implementationClass = "ApplicationComposePlugin"
-        }
         register("application") {
-            id = "build.logic.application"
-            implementationClass = "ApplicationPlugin"
+            id = "build.logic.plugin.application"
+            implementationClass = "plugin.ApplicationPlugin"
         }
-        register("libraryCompose") {
-            id = "build.logic.library.compose"
-            implementationClass = "LibraryComposePlugin"
-        }
-        register("library") {
-            id = "build.logic.library"
-            implementationClass = "LibraryPlugin"
+        register("camera") {
+            id = "build.logic.plugin.camera"
+            implementationClass = "plugin.CameraPlugin"
         }
         register("feature") {
-            id = "build.logic.feature"
-            implementationClass = "FeaturePlugin"
+            id = "build.logic.plugin.feature"
+            implementationClass = "plugin.FeaturePlugin"
+        }
+        register("kotlinMultiplatform") {
+            id = "build.logic.plugin.kotlin_multiplatform"
+            implementationClass = "plugin.KotlinMultiplatformPlugin"
+        }
+        register("koin") {
+            id = "build.logic.plugin.koin"
+            implementationClass = "plugin.KoinPlugin"
+        }
+        register("ktor") {
+            id = "build.logic.plugin.ktor"
+            implementationClass = "plugin.KtorPlugin"
+        }
+        register("library") {
+            id = "build.logic.plugin.library"
+            implementationClass = "plugin.LibraryPlugin"
+        }
+        register("root") {
+            id = "build.logic.plugin.root"
+            implementationClass = "plugin.RootPlugin"
         }
     }
 }
