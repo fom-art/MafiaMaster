@@ -18,7 +18,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.fomart.mafiamaster.core.model.Player
+import com.fomart.mafiamaster.core.model.Role
 import com.fomart.mafiamaster.core.resources.components.RoleCard
+import com.fomart.mafiamaster.core.resources.theme.MafiaMasterTheme
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -60,21 +63,40 @@ fun DistributionScreen(
     }
 }
 
-
-//@OptIn(ExperimentalFoundationApi::class)
-//fun Modifier.disableBackwardScroll(pagerState: PagerState): Modifier {
-//    return this.pointerInput(Unit) {
-//        detectVerticalDragGestures { change, dragAmount ->
-//            // Only allow scrolling forward
-//            if (dragAmount > 0 && pagerState.currentPage > 0) {
-//                change.consume()
-//            }
-//        }
-//    }
-//}
-
-
-//@OptIn(ExperimentalFoundationApi::class)
-//fun PagerState.removeScrollBack() {
-//    this.canScrollBackward = false
-//}
+@Preview
+@Composable
+fun DistributionScreenPreview() {
+    val players = listOf(
+        Player(
+            number = 1,
+            role = Role.Mistress()
+        ),
+        Player(
+            number = 2,
+            role = Role.Maniac()
+        ),
+        Player(
+            number = 3,
+            role = Role.Civilian()
+        ),
+        Player(
+            number = 4,
+            role = Role.Civilian()
+        ),
+        Player(
+            number = 5,
+            role = Role.Doctor()
+        ),
+        Player(
+            number = 6,
+            role = Role.Maniac()
+        )
+    )
+    var canSwipe by remember { mutableStateOf(true) }
+    MafiaMasterTheme {
+        DistributionScreen(
+            canSwipe = canSwipe,
+            players = players
+        )
+    }
+}

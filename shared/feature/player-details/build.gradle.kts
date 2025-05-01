@@ -12,6 +12,8 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation(compose.uiTooling)
+            implementation(compose.preview)
             implementation(compose.components.resources)
             implementation(compose.materialIconsExtended)
             implementation(compose.components.uiToolingPreview)

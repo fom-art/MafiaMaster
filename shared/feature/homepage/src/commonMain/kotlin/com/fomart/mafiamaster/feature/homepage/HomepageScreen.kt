@@ -15,6 +15,7 @@ import mafiamaster.shared.feature.homepage.generated.resources.Res
 import mafiamaster.shared.feature.homepage.generated.resources.app_name
 import mafiamaster.shared.feature.homepage.generated.resources.game_start
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomepageScreen(
@@ -43,5 +44,15 @@ fun HomepageScreen(
                 style = MaterialTheme.typography.displayMedium
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun HomepageScreenPreview() {
+    MafiaMasterTheme {
+        HomepageScreen(
+            goToGameSetup = {}
+        )
     }
 }

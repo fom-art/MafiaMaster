@@ -24,8 +24,7 @@ fun CircleIcon(
     Box(
         modifier = modifier
             .clip(CircleShape)
-            .size(64.dp)
-        ,
+            .size(64.dp),
     ) {
         Box(
             modifier = Modifier.background(backgroundColor),

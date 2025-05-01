@@ -24,6 +24,7 @@ import mafiamaster.shared.feature.game_setup.generated.resources.Res
 import mafiamaster.shared.feature.game_setup.generated.resources.game_start
 import mafiamaster.shared.feature.game_setup.generated.resources.setup_title
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun GameSetupScreen(
@@ -82,5 +83,55 @@ fun GameSetupBody(
     }
 }
 
+@Preview
+@Composable
+fun SetupScreenPreview() {
+    var state by remember { mutableStateOf(GameSetup()) }
+
+    MafiaMasterTheme {
+        GameSetupScreen(
+            state = state,
+            onAction = { intent ->
+                when (intent) {
+                    is GameSetupIntent.ChangePlayersAmount -> {
+                        val hasDon = intent.playersAmount >= 9
+                        val mafiaCount =
+                            (intent.playersAmount / 3) - hasDon.toInt() - state.hasMistress.toInt()
+                        state = state.copy(
+                            totalPlayers = intent.playersAmount,
+                            hasDon = hasDon,
+                            mafiaCount = mafiaCount
+                        )
+                    }
+
+                    GameSetupIntent.ToggleMistress -> {
+                        state = state.copy(hasMistress = !state.hasMistress)
+                        // Recalculate mafia count
+                        val hasDon = state.totalPlayers >= 9
+                        val mafiaCount =
+                            state.totalPlayers / 3 - hasDon.toInt() - state.hasMistress.toInt()
+                        state = state.copy(mafiaCount = mafiaCount)
+                    }
+
+                    GameSetupIntent.ToggleDoctor -> {
+                        state = state.copy(hasDoctor = !state.hasDoctor)
+                    }
+
+                    GameSetupIntent.ToggleManiac -> {
+                        state = state.copy(hasManiac = !state.hasManiac)
+                    }
+
+                    GameSetupIntent.ToggleCommissar -> {
+                        state = state.copy(hasCommissar = !state.hasCommissar)
+                    }
+
+                    GameSetupIntent.GoBack -> {}
+
+                    GameSetupIntent.StartGame -> {}
+                }
+            }
+        )
+    }
+}
 
 fun Boolean.toInt() = if (this) 1 else 0

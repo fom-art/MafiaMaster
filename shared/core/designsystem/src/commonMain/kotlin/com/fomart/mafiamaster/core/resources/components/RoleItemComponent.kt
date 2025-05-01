@@ -52,10 +52,10 @@ fun RoleItemComponent(
         animationSpec = animationSpec
     )
 
-    val animatedIconColor = getAnimatedColor(
+    val iconColor = getAnimatedColor(
         isSelected = roleItem.isSelected,
         selectedColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
-        unselectedColor = MaterialTheme.colorScheme.onSurface,
+        unselectedColor = MaterialTheme.colorScheme.surfaceContainer,
         animationSpec = animationSpec
     )
 
@@ -70,7 +70,8 @@ fun RoleItemComponent(
         modifier = modifier,
         roleItem = roleItem,
         cardColors = cardColors,
-        animatedIconColor = animatedIconColor
+        iconBackgroundColor = Color.White,
+        iconColor = iconColor
     )
 }
 
@@ -106,7 +107,8 @@ private fun RoleCard(
     modifier: Modifier,
     roleItem: RoleItem,
     cardColors: CardColors,
-    animatedIconColor: Color
+    iconBackgroundColor: Color,
+    iconColor: Color
 ) {
     Card(
         modifier = modifier
@@ -126,7 +128,8 @@ private fun RoleCard(
             // Display the circle icon
             CircleIcon(
                 imageVector = vectorResource(roleItem.icon),
-                iconColor = animatedIconColor
+                backgroundColor = iconBackgroundColor,
+                iconColor = iconColor
             )
 
             // Display the role title
