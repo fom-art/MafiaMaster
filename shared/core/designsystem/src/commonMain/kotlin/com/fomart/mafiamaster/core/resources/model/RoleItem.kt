@@ -1,7 +1,8 @@
-package com.fomart.mafiamaster.core.model.setup
+package com.fomart.mafiamaster.core.resources.model
 
-import org.jetbrains.compose.resources.Resource
+import com.fomart.mafiamaster.core.model.GameSetup
 import com.fomart.mafiamaster.core.utils.UiText
+
 import org.jetbrains.compose.resources.DrawableResource
 
 data class RoleItem(
@@ -11,3 +12,4 @@ data class RoleItem(
     val isSelected: Boolean,
     val onClick: (() -> Unit)? = null,
 )
+

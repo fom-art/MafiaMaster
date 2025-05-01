@@ -1,6 +1,7 @@
-package com.fomart.mafiamaster.di
+package com.fomart.mafiamaster
 
 import android.content.Context
+import com.fomart.mafiamaster.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.KoinApplication

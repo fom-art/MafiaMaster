@@ -22,9 +22,9 @@ fun MafiaMasterNavHost(
     val navController = appState.navController
 
     NavHost(
+        modifier = modifier,
         navController = navController,
         startDestination = HomepageScreen,
-        modifier = modifier,
     ) {
         homepageScreen(navigateToGameSetup = navController::navigateToGameSetup)
         gameSetupScreen(

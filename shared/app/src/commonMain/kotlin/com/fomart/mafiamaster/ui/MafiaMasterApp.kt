@@ -1,10 +1,10 @@
 package com.fomart.mafiamaster.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.material.SnackbarDuration
-import androidx.compose.material.SnackbarHostState
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.SnackbarResult
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.remember
@@ -19,7 +19,7 @@ fun MafiaMasterApp(
     val snackbarHostState = remember { SnackbarHostState() }
 
     MafiaMasterNavHost(
-        modifier = modifier.background(MaterialTheme.colors.background),
+        modifier = modifier.background(MaterialTheme.colorScheme.background),
         appState = appState,
         onShowSnackbar = { message, action ->
             snackbarHostState.showSnackbar(

@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.fomart.mafiamaster.core.model.setup.RoleItem
+import com.fomart.mafiamaster.core.resources.model.RoleItem
 import org.jetbrains.compose.resources.vectorResource
 
 @Composable

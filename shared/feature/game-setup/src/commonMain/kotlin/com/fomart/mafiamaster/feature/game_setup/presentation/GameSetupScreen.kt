@@ -19,6 +19,7 @@ import com.fomart.mafiamaster.core.resources.components.HorizontalPlayerCountPic
 import com.fomart.mafiamaster.core.resources.components.RoleItemComponent
 import com.fomart.mafiamaster.core.resources.theme.MafiaMasterTheme
 import com.fomart.mafiamaster.core.model.GameSetup
+import com.fomart.mafiamaster.core.resources.model.extensions.toRoleItems
 import mafiamaster.shared.feature.game_setup.generated.resources.Res
 import mafiamaster.shared.feature.game_setup.generated.resources.game_start
 import mafiamaster.shared.feature.game_setup.generated.resources.setup_title

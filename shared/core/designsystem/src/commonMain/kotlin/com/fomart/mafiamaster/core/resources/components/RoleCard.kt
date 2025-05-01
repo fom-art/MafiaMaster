@@ -27,6 +27,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fomart.mafiamaster.core.model.Player
+import com.fomart.mafiamaster.core.resources.model.extensions.getImage
+import com.fomart.mafiamaster.core.resources.model.extensions.getName
 import mafiamaster.shared.core.designsystem.generated.resources.Res
 import mafiamaster.shared.core.designsystem.generated.resources.img_role_card_background_1
 import mafiamaster.shared.core.designsystem.generated.resources.img_role_card_background_2
@@ -123,7 +125,7 @@ fun FrontSideOfCard(
             modifier = Modifier
                 .fillMaxWidth(0.37f)
                 .aspectRatio(1f),
-            imageVector = vectorResource(player.role.getImageFromRole()),
+            imageVector = vectorResource(player.role.getImage()),
             backgroundColor = MaterialTheme.colorScheme.onSurfaceVariant,
             iconColor = MaterialTheme.colorScheme.surfaceVariant
         )
@@ -131,7 +133,7 @@ fun FrontSideOfCard(
         Spacer(modifier = Modifier.fillMaxHeight(0.225f))
 
         Text(
-            text = player.role.getNameFromRole().asString(),
+            text = player.role.getName().asString(),
             style = MaterialTheme.typography.displaySmall,
             fontWeight = FontWeight.SemiBold
         )
